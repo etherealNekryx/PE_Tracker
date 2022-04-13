@@ -39,14 +39,14 @@ express()
         LEFT JOIN pg_catalog.pg_type AS t
         ON a.atttypid = t.oid
         WHERE c.relname IN ('users', 'observations', 'students', 'schools', 'tasks')
-        ORDER BY c.relname a.attnum;
+        ORDER BY c.relname, a.attnum;
       `);
       
       const locals = {
         'tables': (tables) ? tables.rows : null
       }
       
-      res.render('/pages/db-info', locals);
+      res.render('pages/db-info', locals);
       client.release();
     }
     catch (err) {
