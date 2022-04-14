@@ -9,7 +9,7 @@ const pool = new Pool({
   ssl: {
     rejectUnauthorized: false
   }
-})
+});
 
 express()
   .use(express.static(path.join(__dirname, 'public')))
@@ -93,7 +93,7 @@ express()
         'Content-Type': 'application/json'
       });
       res.json({requestBody: result});
-      client.release;
+      client.release();
 
     } catch (err) {
       console.error(err);
